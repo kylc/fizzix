@@ -25,6 +25,19 @@ class Window < Gosu::Window
     c.particles.each do |p|
       draw_particle(p)
     end
+
+    c.constraints.each do |s|
+      draw_constraint(s)
+    end
+  end
+
+  def draw_constraint(s)
+    sx, sy = s.a.pos.x, s.a.pos.y
+    ex, ey = s.b.pos.x, s.b.pos.y
+
+
+    c = Gosu::Color::WHITE
+    draw_line(sx, sy, c, ex, ey, c)
   end
 
   def draw_particle(p)
