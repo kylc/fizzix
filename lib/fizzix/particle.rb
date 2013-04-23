@@ -1,8 +1,6 @@
 module Fizzix
-  GRAVITY = Fizzix::Vector.new(0, 0.02)
-
   class Particle
-    attr_reader :pos
+    attr_accessor :pos
 
     attr_reader :last_pos
 

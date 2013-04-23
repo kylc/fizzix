@@ -27,7 +27,11 @@ module Fizzix
     end
 
     def length
-      Math::sqrt(self.x ** 2 + self.y ** 2)
+      Math::sqrt(length2)
+    end
+
+    def length2
+      self.x ** 2 + self.y ** 2
     end
   end
 end

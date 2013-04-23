@@ -7,16 +7,24 @@ class Window < Gosu::Window
     super 640, 480, false
     self.caption = "Fizzix Demo"
 
-    v = Fizzix::Vector.new(100, 100)
-    @particle = Fizzix::Particle.new(v)
+    vs = [Fizzix::Particle.new(Fizzix::Vector.new(100, 100)),
+          Fizzix::Particle.new(Fizzix::Vector.new(200, 200)),
+          Fizzix::Particle.new(Fizzix::Vector.new(300, 200))]
+    @composite = Fizzix::Composite.make_line_segements(vs, 0.02)
   end
 
   def update
-    @particle.update!
+    @composite.update!
   end
 
   def draw
-    draw_particle(@particle)
+    draw_composite(@composite)
+  end
+
+  def draw_composite(c)
+    c.particles.each do |p|
+      draw_particle(p)
+    end
   end
 
   def draw_particle(p)
