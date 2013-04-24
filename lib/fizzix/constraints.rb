@@ -33,4 +33,16 @@ module Fizzix
       @b.pos -= norm
     end
   end
+
+  class PinConstraint < Constraint
+    def initialize(a)
+      @pinned_pos = a.pos
+
+      super a, a
+    end
+
+    def relax!(coef)
+      @a.pos = @pinned_pos
+    end
+  end
 end

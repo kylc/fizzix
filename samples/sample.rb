@@ -9,8 +9,11 @@ class Window < Gosu::Window
 
     vs = [Fizzix::Particle.new(Fizzix::Vector.new(100, 100)),
           Fizzix::Particle.new(Fizzix::Vector.new(200, 200)),
+          Fizzix::Particle.new(Fizzix::Vector.new(210, 200)),
+          Fizzix::Particle.new(Fizzix::Vector.new(200, 220)),
           Fizzix::Particle.new(Fizzix::Vector.new(300, 200))]
     @composite = Fizzix::Composite.make_line_segements(vs, 0.02)
+    @composite.constraints << Fizzix::PinConstraint.new(vs[3])
   end
 
   def update
