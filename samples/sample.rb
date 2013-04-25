@@ -7,13 +7,14 @@ class Window < Gosu::Window
     super 640, 480, false
     self.caption = "Fizzix Demo"
 
-    vs = [Fizzix::Particle.new(Fizzix::Vector.new(100, 100)),
-          Fizzix::Particle.new(Fizzix::Vector.new(200, 200)),
-          Fizzix::Particle.new(Fizzix::Vector.new(210, 200)),
-          Fizzix::Particle.new(Fizzix::Vector.new(200, 220)),
-          Fizzix::Particle.new(Fizzix::Vector.new(300, 200))]
-    @composite = Fizzix::Composite.make_line_segements(vs, 0.02)
-    @composite.constraints << Fizzix::PinConstraint.new(vs[3])
+    # vs = [Fizzix::Particle.new(Fizzix::Vector.new(100, 100)),
+    #       Fizzix::Particle.new(Fizzix::Vector.new(200, 200)),
+    #       Fizzix::Particle.new(Fizzix::Vector.new(210, 200)),
+    #       Fizzix::Particle.new(Fizzix::Vector.new(200, 220)),
+    #       Fizzix::Particle.new(Fizzix::Vector.new(300, 200))]
+    # @composite = Fizzix::Composite.make_line_segements(vs, 0.02)
+    # @composite.constraints << Fizzix::PinConstraint.new(vs[3])
+    @composite = Fizzix::Composite.make_grid(20, 10)
   end
 
   def update
@@ -25,9 +26,9 @@ class Window < Gosu::Window
   end
 
   def draw_composite(c)
-    c.particles.each do |p|
-      draw_particle(p)
-    end
+    # c.particles.each do |p|
+    #   draw_particle(p)
+    # end
 
     c.constraints.each do |s|
       draw_constraint(s)

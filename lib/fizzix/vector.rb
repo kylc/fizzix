@@ -3,35 +3,35 @@ module Fizzix
     attr_reader :x, :y
 
     def initialize(x, y)
-      @x, @y = x.to_f, y.to_f
+      @x, @y = x, y
     end
 
     def +(o)
-      Vector.new(self.x + o.x, self.y + o.y)
+      Vector.new(@x + o.x, @y + o.y)
     end
 
     def -(o)
-      Vector.new(self.x - o.x, self.y - o.y)
+      Vector.new(@x - o.x, @y - o.y)
     end
 
     def *(o)
-      Vector.new(self.x * o.x, self.y * o.y)
+      Vector.new(@x * o.x, @y * o.y)
     end
 
     def /(o)
-      Vector.new(self.x / o.x, self.y / o.y)
+      Vector.new(@x / o.x, @y / o.y)
     end
 
     def scale(c)
-      Vector.new(self.x * c, self.y * c)
+      Vector.new(@x * c, @y * c)
     end
 
     def length
       Math::sqrt(length2)
-    end
+   end
 
     def length2
-      self.x ** 2 + self.y ** 2
+      @x ** 2 + @y ** 2
     end
   end
 end

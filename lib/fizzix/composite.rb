@@ -26,5 +26,34 @@ module Fizzix
 
       Composite.new(vs, constraints)
     end
+
+    def self.make_grid(segements, spacing)
+      particles = []
+      constraints = []
+
+      segements.times do |x|
+        particles << []
+        segements.times do |y|
+          p = Particle.new(Vector.new(x * spacing, y * spacing))
+          particles[x] << p
+
+          # Pin the top row
+          if y == 0
+            constraints << PinConstraint.new(p)
+          end
+
+          if x > 0
+            constraints << DistanceConstraint.new(p, particles[x - 1][y], 0.02)
+          end
+
+          if y > 0
+            constraints << DistanceConstraint.new(p, particles[x][y - 1], 0.02)
+          end
+        end
+
+      end
+
+      Composite.new(particles.flatten, constraints)
+    end
   end
 end
