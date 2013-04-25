@@ -34,7 +34,7 @@ module Fizzix
       segements.times do |x|
         particles << []
         segements.times do |y|
-          p = Particle.new(Vector.new(x * spacing, y * spacing))
+          p = Particle.new(Vector[x * spacing, y * spacing])
           particles[x] << p
 
           # Pin the top row

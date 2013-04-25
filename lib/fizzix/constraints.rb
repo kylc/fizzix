@@ -18,16 +18,16 @@ module Fizzix
 
     def initialize(a, b, stiffness, resting_dist=nil)
       @stiffness = stiffness
-      @resting_dist = resting_dist ? resting_dist : (a.pos - b.pos).length
+      @resting_dist = resting_dist ? resting_dist : (a.pos - b.pos).magnitude
 
       super a, b
     end
 
     def relax!(coef)
       norm = @a.pos - @b.pos
-      l = norm.length2.to_f
+      l = norm.magnitude ** 2
 
-      norm = norm.scale(((@resting_dist ** 2 - l) / l) * @stiffness * coef)
+      norm = norm * (((@resting_dist ** 2 - l) / l) * @stiffness * coef)
 
       @a.pos += norm
       @b.pos -= norm

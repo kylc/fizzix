@@ -36,8 +36,8 @@ class Window < Gosu::Window
   end
 
   def draw_constraint(s)
-    sx, sy = s.a.pos.x, s.a.pos.y
-    ex, ey = s.b.pos.x, s.b.pos.y
+    sx, sy = s.a.pos[0], s.a.pos[1]
+    ex, ey = s.b.pos[0], s.b.pos[1]
 
 
     c = Gosu::Color::WHITE
