@@ -14,7 +14,7 @@ class Window < Gosu::Window
     #       Fizzix::Particle.new(Fizzix::Vector.new(300, 200))]
     # @composite = Fizzix::Composite.make_line_segements(vs, 0.02)
     # @composite.constraints << Fizzix::PinConstraint.new(vs[3])
-    @composite = Fizzix::Composite.make_grid(20, 10)
+    @composite = Fizzix::Composite.make_grid(10, 5)
   end
 
   def update
