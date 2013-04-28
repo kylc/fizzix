@@ -42,10 +42,12 @@ module Fizzix
             constraints << PinConstraint.new(p)
           end
 
+          # Constrain every row to it's left neighbor
           if x > 0
             constraints << DistanceConstraint.new(p, particles[x - 1][y], 0.02)
           end
 
+          # Constrain every row to it's neighbor above
           if y > 0
             constraints << DistanceConstraint.new(p, particles[x][y - 1], 0.02)
           end

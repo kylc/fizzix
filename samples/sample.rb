@@ -7,13 +7,6 @@ class Window < Gosu::Window
     super 640, 480, false
     self.caption = "Fizzix Demo"
 
-    # vs = [Fizzix::Particle.new(Fizzix::Vector.new(100, 100)),
-    #       Fizzix::Particle.new(Fizzix::Vector.new(200, 200)),
-    #       Fizzix::Particle.new(Fizzix::Vector.new(210, 200)),
-    #       Fizzix::Particle.new(Fizzix::Vector.new(200, 220)),
-    #       Fizzix::Particle.new(Fizzix::Vector.new(300, 200))]
-    # @composite = Fizzix::Composite.make_line_segements(vs, 0.02)
-    # @composite.constraints << Fizzix::PinConstraint.new(vs[3])
     @composite = Fizzix::Composite.make_grid(10, 5)
   end
 
@@ -26,6 +19,9 @@ class Window < Gosu::Window
   end
 
   def draw_composite(c)
+    # We won't draw the individual points for a cloth demo, only the
+    # constraints.
+
     # c.particles.each do |p|
     #   draw_particle(p)
     # end
@@ -38,7 +34,6 @@ class Window < Gosu::Window
   def draw_constraint(s)
     sx, sy = s.a.pos[0], s.a.pos[1]
     ex, ey = s.b.pos[0], s.b.pos[1]
-
 
     c = Gosu::Color::WHITE
     draw_line(sx, sy, c, ex, ey, c)
